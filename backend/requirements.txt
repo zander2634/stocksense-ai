@@ -9,7 +9,7 @@ python-multipart==0.0.32
 pydantic==2.13.5
 email-validator==2.3.0
 scikit-learn==1.9.1
-xgboost==3.4.1
-pandas==3.0.6
-numpy==2.5.3
+xgboost==2.0.3
+pandas==2.1.4
+numpy==1.26.4
 joblib==1.6.0
