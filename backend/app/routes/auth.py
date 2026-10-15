@@ -68,7 +68,7 @@ def register(user_data: UserCreate, db: Session = Depends(get_db)):
 # ============================================
 
 @router.post("/login", response_model=Token)
-@limiter.limit("3/minute")
+@limiter.limit("3/minute")     ← 3 ATTEMPTS NA LANG
 def login(
     request: Request,
     form_data: OAuth2PasswordRequestForm = Depends(),
