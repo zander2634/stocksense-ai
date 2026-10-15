@@ -19,7 +19,10 @@ from fastapi import Request
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 
-limiter = Limiter(key_func=get_remote_address)
+def get_global_key(request: Request):
+    return "global"  # Palaging "global" — shared limit
+
+limiter = Limiter(key_func=get_global_key)
 
 router = APIRouter(prefix="/api/auth", tags=["Authentication"])
 
