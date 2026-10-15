@@ -15,6 +15,11 @@ from app.services.auth_service import (
 )
 from app.config import settings
 from fastapi import APIRouter, Depends, HTTPException, status, Form
+from fastapi import Request
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+
+limiter = Limiter(key_func=get_remote_address)
 
 router = APIRouter(prefix="/api/auth", tags=["Authentication"])
 
@@ -60,9 +65,11 @@ def register(user_data: UserCreate, db: Session = Depends(get_db)):
 # ============================================
 
 @router.post("/login", response_model=Token)
+@limiter.limit("5/minute")
 def login(
+    request: Request,
     form_data: OAuth2PasswordRequestForm = Depends(),
-    captcha_token: str = Form(None),   # ← IDAGDAG
+    captcha_token: str = Form(None),
     db: Session = Depends(get_db)
 ):
     """Login and get access token"""

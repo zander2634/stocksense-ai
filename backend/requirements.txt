@@ -4,7 +4,7 @@ sqlalchemy==2.0.54
 psycopg2-binary==2.9.13
 python-jose==3.5.0
 passlib==1.7.4
-bcrypt==5.0.0
+bcrypt==4.0.1
 python-multipart==0.0.32
 pydantic==2.13.5
 email-validator==2.3.0
@@ -13,3 +13,5 @@ xgboost==2.0.3
 pandas==2.1.4
 numpy==1.26.4
 joblib==1.6.0
+slowapi==0.1.9
+requests==2.32.3
