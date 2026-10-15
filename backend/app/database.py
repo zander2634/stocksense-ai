@@ -1,20 +1,18 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# Database URL - PALITAN ANG PASSWORD!
-DATABASE_URL = "postgresql://postgres:sanderxb1@localhost:5432/stocksense"
+# HARDCODED FOR DEPLOYMENT
+DATABASE_URL = "postgresql://stocksense_user:FrprtpviOU7BqVBXQBL8xK75vdiKuQWh@dpg-db4gm0e0tbbc73eathlg-a:5432/stocksense_5vus?sslmode=require"
 
-# Create engine
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
 engine = create_engine(DATABASE_URL)
-
-# Create session
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Base class for models
 Base = declarative_base()
 
-# Dependency for routes
 def get_db():
     db = SessionLocal()
     try:
