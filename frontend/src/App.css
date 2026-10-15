@@ -842,3 +842,298 @@ body {
 canvas {
   transition: none !important;
 }
+/* ============================================ */
+/* ============= MOBILE RESPONSIVE ============ */
+/* ============================================ */
+
+/* Tablets and smaller (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+  
+  .navbar-links {
+    gap: 4px;
+  }
+  
+  .navbar-links a {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  
+  .app-content {
+    padding: 20px 16px;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile landscape and portrait (max-width: 768px) */
+@media (max-width: 768px) {
+  /* NAVBAR */
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+  
+  .navbar-brand h2 {
+    font-size: 18px;
+  }
+  
+  .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+  }
+  
+  .navbar-links a {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  
+  .navbar-user {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 13px;
+  }
+  
+  /* LOGIN PAGE */
+  .login-container {
+    padding: 20px 16px;
+  }
+  
+  .login-card {
+    padding: 24px 20px;
+    max-width: 100%;
+    border-radius: 12px;
+  }
+  
+  .login-header h1 {
+    font-size: 22px;
+  }
+  
+  .login-header p {
+    font-size: 13px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px;
+    font-size: 16px;  /* Prevent zoom sa iOS */
+  }
+  
+  /* CONTENT */
+  .app-content {
+    padding: 16px 12px;
+  }
+  
+  .page-container {
+    padding: 12px;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .page-header h1 {
+    font-size: 22px;
+  }
+  
+  .page-header .btn-primary {
+    width: 100%;
+    padding: 12px 16px;
+  }
+  
+  /* STATS */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .stat-card {
+    padding: 16px;
+  }
+  
+  .stat-icon {
+    font-size: 28px;
+  }
+  
+  .stat-info h3 {
+    font-size: 20px;
+  }
+  
+  /* CARDS */
+  .card,
+  .dashboard-card {
+    padding: 16px;
+    border-radius: 10px;
+  }
+  
+  .health-score-card {
+    padding: 16px;
+  }
+  
+  .health-score-card h2 {
+    font-size: 16px;
+  }
+  
+  /* TABLES */
+  .data-table {
+    font-size: 12px;
+  }
+  
+  .data-table th,
+  .data-table td {
+    padding: 8px 6px;
+  }
+  
+  .data-table th {
+    font-size: 11px;
+  }
+  
+  /* Allow horizontal scroll for wide tables */
+  .card {
+    overflow-x: auto;
+  }
+  
+  /* BUTTONS */
+  .btn-sm {
+    padding: 4px 8px;
+    font-size: 11px;
+    margin-right: 3px;
+  }
+  
+  .btn-primary {
+    padding: 12px;
+    font-size: 15px;
+  }
+  
+  /* FORECAST */
+  .forecast-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .forecast-controls .btn-primary {
+    width: 100%;
+  }
+  
+  .reorder-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .reorder-value-big {
+    font-size: 22px;
+  }
+  
+  /* ALERTS */
+  .alert-item {
+    padding: 14px;
+    gap: 12px;
+  }
+  
+  .alert-icon {
+    font-size: 24px;
+  }
+  
+  .alert-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  
+  .alert-meta {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  /* MODAL */
+  .modal {
+    padding: 20px;
+    width: 95%;
+    max-height: 95vh;
+    border-radius: 10px;
+  }
+  
+  .modal h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  /* CHART */
+  .chart-container {
+    height: 250px;
+  }
+  
+  /* CAPTCHA */
+  .captcha-grid {
+    max-width: 100%;
+  }
+  
+  .captcha-emoji {
+    font-size: 28px;
+  }
+}
+
+/* Small mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar-links a {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+  
+  .navbar-user {
+    font-size: 12px;
+  }
+  
+  .btn-logout {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .login-header h1 {
+    font-size: 20px;
+  }
+  
+  .stat-info h3 {
+    font-size: 18px;
+  }
+  
+  .stat-info p {
+    font-size: 12px;
+  }
+  
+  .reorder-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .reorder-value-big {
+    font-size: 20px;
+  }
+}
+
+/* Landscape orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .login-container {
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+  
+  .login-card {
+    margin-bottom: 20px;
+  }
+}
