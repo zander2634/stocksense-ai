@@ -23,13 +23,10 @@ const getInitialUser = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  // Initialize user AGAD mula sa localStorage
   const [user, setUser] = useState(getInitialUser);
-  const [loading] = useState(false);
 
   const login = async (username, password, captchaToken) => {
     try {
-      // Gumawa ng form data para sa login
       const formData = new URLSearchParams();
       formData.append('username', username);
       formData.append('password', password);
@@ -37,43 +34,35 @@ export const AuthProvider = ({ children }) => {
         formData.append('captcha_token', captchaToken);
       }
       
-      // Mag-request sa backend
       const response = await api.post('/api/auth/login', formData, {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       });
       
-      // Kunin ang access token
       const { access_token } = response.data;
       localStorage.setItem('access_token', access_token);
       
-      // Kunin ang user info
       const userResponse = await api.get('/api/auth/me', {
         headers: { Authorization: `Bearer ${access_token}` }
       });
       
-      // I-save ang user sa localStorage
       localStorage.setItem('user', JSON.stringify(userResponse.data));
       setUser(userResponse.data);
       
       return { success: true };
     } catch (error) {
-      // I-handle ang rate limit error (429)
       let errorMessage = 'Login failed';
       
       if (error.response) {
         if (error.response.status === 429) {
-  errorMessage = '⚠️ Maximum 3 login attempts per minute. Please wait 1 minute and try again.';
-} else if (error.response.data?.detail) {
+          errorMessage = '⚠️ Too many login attempts. Please wait 1 minute and try again.';
+        } else if (error.response.data?.detail) {
           errorMessage = error.response.data.detail;
         } else if (error.response.data?.error) {
           errorMessage = error.response.data.error;
         }
       }
       
-      return {
-        success: false,
-        error: errorMessage
-      };
+      return { success: false, error: errorMessage };
     }
   };
 
