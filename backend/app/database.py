@@ -3,19 +3,14 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# HARDCODED FOR DEPLOYMENT - External URL with SSL
-DATABASE_URL = "postgresql://stocksense_user:FrprtpviOU7BqVBXQBL8xK75vdiKuQWh@dpg-db4gm0e0tbbc73eathlg-a.singapore-postgres.render.com:5432/stocksense_5vus"
+# NEON DATABASE URL
+DATABASE_URL = "postgresql://neondb_owner:npg_Y5hqwABx9Bv0@ep-twilight-cloud-azl78jxo-pooler.c-3.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-# Engine WITH SSL required (Render PostgreSQL)
 engine = create_engine(
     DATABASE_URL,
-    connect_args={
-        "sslmode": "require",
-        "connect_timeout": 30,
-    },
     pool_pre_ping=True,
     pool_recycle=300,
     echo=False
