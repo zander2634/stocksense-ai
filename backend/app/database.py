@@ -4,8 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # NEON DATABASE URL
-DATABASE_URL = "postgresql://neondb_owner:npg_Y5hqwABx9Bv0@ep-twilight-cloud-azl78jxo-pooler.c-3.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-
+DATABASE_URL = "postgresql://neondb_owner:npg_Sy4JlKa1kIQA@ep-twilight-cloud-azl78jxo-pooler.c-3.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
