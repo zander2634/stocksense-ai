@@ -3,17 +3,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# HARDCODED FOR DEPLOYMENT - External URL
+# HARDCODED FOR DEPLOYMENT - External URL with SSL
 DATABASE_URL = "postgresql://stocksense_user:FrprtpviOU7BqVBXQBL8xK75vdiKuQWh@dpg-db4gm0e0tbbc73eathlg-a.singapore-postgres.render.com:5432/stocksense_5vus"
 
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-# Engine WITHOUT SSL - Render Free tier issue
+# Engine WITH SSL required (Render PostgreSQL)
 engine = create_engine(
     DATABASE_URL,
     connect_args={
-        "sslmode": "disable",
+        "sslmode": "require",
         "connect_timeout": 30,
     },
     pool_pre_ping=True,
