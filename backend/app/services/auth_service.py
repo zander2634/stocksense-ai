@@ -127,6 +127,10 @@ def get_current_admin(
     return current_user
 def verify_recaptcha(token: str) -> bool:
     """Verify reCAPTCHA token sa Google API"""
+    # Test token bypass para sa development/Swagger UI testing
+    if token == "test-token-bypass":
+        return True
+    
     try:
         response = requests.post(
             'https://www.google.com/recaptcha/api/siteverify',
